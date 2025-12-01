@@ -1,6 +1,6 @@
  Sistema de Cadastro de Pacientes – Java
 
-Este projeto é um sistema simples de cadastro para uma clínica hospitalar, desenvolvido em Java, com foco em organização, encapsulamento, validação e manipulação de dados de pacientes e funcionários.
+Este projeto é um sistema simples de cadastro para uma Unidade Básica de Saúde, desenvolvido em Java, com foco em organização, encapsulamento, validação e manipulação de dados de pacientes e funcionários.
 
  Funcionalidades
 
@@ -39,30 +39,19 @@ src/
 └── ArquivoUtil.java
 
  Tecnologias Utilizadas
- 
-- Programação Orientada a Objetos (POO)**  
-- Encapsulamento  
-- Construtores  
-- Sobrecarga de métodos  
-- Tratamento de exceções (`throws`, `throw`)  
-- `toString()` para exibir fichas  
-- Leitura e escrita em arquivo de texto
+ -Java17
+- Programação Orientada a Objetos (POO)
 - Eclipse
 - PlantUML 
 - PostgreSQL (pgAdmin 4)
 
-Persistência de Dados
+ Banco de Dados
 
-O arquivo `dados_usb.txt` é usado para armazenar:
+O banco de dados é usado para armazenar:
 - Pacientes cadastrados  
 - Consultas  
 - Informações importantes para manter o funcionamento entre execuções  
-
-Todo o controle é feito pela classe ArquivoUtil, responsável por:
-- Salvar dados  
-- Ler dados  
-- Gerar estrutura de armazenamento  
-- Evitar corrompimento do arquivo  
+  
 
  Como Executar
 
