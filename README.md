@@ -33,7 +33,9 @@ Enfermeiros / Funcionários
 - Atributos como nome, identificação, cargo e horário de trabalho  
 
  Estrutura do Projeto
+ 
 src/
+
 ├── Main.java
 ├── Paciente.java
 ├── Enfermeiro.java
@@ -43,7 +45,8 @@ src/
 └── ArquivoUtil.java
 
  Tecnologias Utilizadas
- -Java17
+ 
+-Java17
 - Programação Orientada a Objetos (POO)
 - Eclipse
 - PlantUML 
