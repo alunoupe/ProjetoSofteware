@@ -1,0 +1,104 @@
+@startuml
+skinparam classAttributeIconStyle relevant
+hide circle
+
+abstract class Pessoa {
+    # String cpf
+    # String nome
+    + Pessoa(cpf: String, nome: String)
+    + getCpf(): String
+    + getNome(): String
+}
+
+class Morador {
+    - String sus
+    - String dataNascimento
+    - int idade
+    - String endereco
+    - String sexo
+    - String condicoesSaude
+    - boolean riscoSaude
+    + Morador(...)
+    + getDadosParaArquivo(): String
+    + isRiscoSaude(): boolean
+}
+Pessoa <|-- Morador : "é um"
+
+class AgenteDeSaude {
+    {static} - ArrayList<Familia> familias
+    + autenticar(sc: Scanner): boolean {static}
+    + executar(sc: Scanner): void {static}
+    + salvarFamilias(): void {static}
+}
+Pessoa <|-- AgenteDeSaude : "é um"
+
+class Enfermeiro {
+    - String especialidade
+    {static} - List<Relatorio> relatorios
+    {static} - List<Familia> familias
+    + Enfermeiro(...)
+    + autenticar(sc: Scanner): boolean {static}
+    + executar(sc: Scanner): void {static}
+}
+Pessoa <|-- Enfermeiro : "é um"
+
+class Familia {
+    - Morador responsavel
+    - String endereco
+    - List<Morador> moradores
+    - List<VisitaDomiciliar> visitas
+    - List<Relatorio> relatorios
+    + Familia(responsavel: Morador)
+    + adicionarMorador(m: Morador)
+    + buscarMorador(cpf: String): Morador
+    + adicionarVisita(v: VisitaDomiciliar)
+    + adicionarRelatorio(r: Relatorio)
+}
+
+class Relatorio {
+    - Date dataGeracao
+    - String tipo
+    - String conteudo
+    + Relatorio(dataGeracao: Date, tipo: String, conteudo: String)
+    + getDadosParaArquivo(): String
+    + executar(sc: Scanner): void {static}
+}
+
+class VisitaDomiciliar {
+    - Date data
+    - String observacoes
+    - AgenteDeSaude agente
+    - Familia familiaVisitada
+    + VisitaDomiciliar(...)
+    + salvarEmArquivo(): void
+}
+
+class ArquivoUtil {
+    {static} + String DIRETORIO
+    {static} - String NOME_ARQUIVO
+    + salvar(nomeArquivo: String, conteudo: String): void {static}
+    + salvarFamilias(...): void {static}
+    + carregarFamilias(): ArrayList<Familia> {static}
+}
+
+class Main {
+    + main(args: String[]): void {static}
+}
+
+Familia "1" o-- "1" Morador : responsável
+Familia "1" o-- "*" Morador : moradores
+
+Familia "1" o-- "*" Relatorio : relatorios
+Familia "1" o-- "*" VisitaDomiciliar : visitas
+
+VisitaDomiciliar "1" -- "1" AgenteDeSaude : agente
+VisitaDomiciliar "1" -- "1" Familia : familiaVisitada
+
+AgenteDeSaude ..> ArquivoUtil : <<usa>>
+VisitaDomiciliar ..> ArquivoUtil : <<usa>>
+Relatorio ..> AgenteDeSaude : <<busca familia>>
+Main ..> AgenteDeSaude
+Main ..> Enfermeiro
+Main ..> Relatorio
+
+@enduml

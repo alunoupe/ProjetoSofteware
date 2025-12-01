@@ -1,0 +1,43 @@
+@startuml
+
+left to right direction
+
+actor "Agente de Saúde" as Agente
+actor "Enfermeiro(a)" as Enfermeiro
+actor "Sistema" as Sistema
+
+rectangle "Sistema UBS" {
+
+    (Autenticar Usuário)
+    (Visualizar Relatórios) <. (Listar Relatórios por Família) : <<include>>
+    (Criar Novo Relatório)
+    (Editar Relatório)
+    (Excluir Relatório)
+    (Salvar Dados - Arquivo/BD)
+    
+    (Cadastrar Família e Moradores)
+    (Listar Famílias e Moradores)
+    (Realizar Visita Domiciliar)
+    
+    (Visualizar Moradores com Risco)
+}
+
+Agente -- (Autenticar Usuário)
+Agente -- (Cadastrar Família e Moradores)
+Agente -- (Listar Famílias e Moradores)
+Agente -- (Realizar Visita Domiciliar)
+Agente -- (Visualizar Relatórios)
+
+Enfermeiro -- (Autenticar Usuário)
+Enfermeiro -- (Visualizar Relatórios)
+Enfermeiro -- (Visualizar Moradores com Risco)
+
+(Criar Novo Relatório) -- Agente
+(Criar Novo Relatório) -- Enfermeiro
+(Editar Relatório) -- Agente
+(Excluir Relatório) -- Agente
+(Visualizar Relatórios) -- Enfermeiro
+
+Sistema -- (Salvar Dados - Arquivo/BD)
+
+@enduml
