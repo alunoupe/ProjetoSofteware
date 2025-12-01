@@ -22,6 +22,18 @@ O sistema oferece um conjunto completo de operações para a gestão de dados na
  Cadastro Simples: Registro de nome, identificação, cargo e horário de trabalho.
 
  Relatórios: Geração de um relatório simples com informações organizadas sobre o corpo de funcionários.
+
+ Tecnologias Utilizadas -Java17
+
+Programação Orientada a Objetos (POO)
+
+Eclipse
+
+PlantUML
+
+PostgreSQL (pgAdmin 4)
+
+Banco de Dados
  
  ⚠️ Nota sobre o Padrão MVC e a Separação de Preocupações
  
