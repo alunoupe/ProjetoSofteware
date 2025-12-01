@@ -1,89 +1,87 @@
- Sistema de Cadastro de Pacientes – Java
+ Sistema de Cadastro e Agendamento para Unidade Básica de Saúde (UBS)
+Projeto acadêmico desenvolvido em Java com foco em persistência de dados e aplicação de Programação Orientada a Objetos (POO).
 
-Este projeto é um sistema simples de cadastro para uma Unidade Básica de Saúde, desenvolvido em Java, com foco em organização, encapsulamento, validação e manipulação de dados de pacientes e funcionários.
+ Visão Geral do Projeto
+Este projeto consiste em um Sistema de Gerenciamento básico e robusto, desenvolvido em Java 17, para otimizar os processos de cadastro de Pacientes e Funcionários (Enfermeiros) e o Agendamento de Consultas em uma Unidade Básica de Saúde (UBS).
 
-Porque não está no padrao MVC?
+O desenvolvimento priorizou a organização do código, o encapsulamento de dados sensíveis e a validação rigorosa, garantindo a integridade da informação e a aplicação de conceitos sólidos de POO.
 
-Problema:
+ Funcionalidades Principais
+O sistema oferece um conjunto completo de operações para a gestão de dados na UBS:
 
-O Problema:
-A implementação mistura a interface de usuário (View) com a lógica de controle (Controller) dentro da mesma classe.
+1. Gerenciamento de Pacientes
+ Cadastro Completo: Registro de nome, data de nascimento, endereço, sexo e telefone.
 
-Em um MVC correto, o Controller (AgenteDeSaude) deve apenas receber dados já coletados da View, e não realizar a coleta de dados ele mesmo. A Visão (I/O) e a Lógica de Negócio (Controller) estão na mesma classe, violando a separação de preocupações que é a base do MVC.
+ Validação de Documento: Implementação de lógica para a validação de CPF.
 
- Funcionalidades
+ CRUD (Create, Read, Update, Delete): Funcionalidades para Cadastrar, Listar, Editar dados e Remover pacientes.
 
-Pacientes
+ Consulta de Ficha: Exibição da ficha completa do paciente.
 
-- Cadastro de paciente  
-- Listar pacientes cadastrados  
-- Editar dados  
-- Remover paciente  
-- Consultar ficha completa  
-- Validação de CPF  
-- Registro de data de nascimento, endereço, sexo e telefone
+2. Gerenciamento de Funcionários (Enfermeiros)
+ Cadastro Simples: Registro de nome, identificação, cargo e horário de trabalho.
 
- Consultas
+ Relatórios: Geração de um relatório simples com informações organizadas sobre o corpo de funcionários.
  
-- Registrar motivos da consulta  
-- Exibir horários disponíveis  
-- Bloquear horários já ocupados  
-- Evitar conflitos de agendamento  
-- Exibir ficha completa do paciente com o horário marcado
-
-Enfermeiros / Funcionários
-
-- Cadastro de enfermeiros  
-- Relatório simples com informações organizadas  
-- Atributos como nome, identificação, cargo e horário de trabalho  
-
- Estrutura do Projeto
+ ⚠️ Nota sobre o Padrão MVC e a Separação de Preocupações
  
-src/
+Embora o projeto aplique fortes princípios de POO, observou-se uma limitação no escopo atual:
 
-├── Main.java
-├── Paciente.java
-├── Enfermeiro.java
-├── Familia.java
-├── Relatorio.java
-└── util/
-└── ArquivoUtil.java
+A classe Controller (ou o que desempenha seu papel, como a classe AgenteDeSaude – se esta existir, ou a classe que gerencia a lógica) está atualmente realizando a coleta de dados (Input/Output), juntamente com a lógica de negócio.
 
- Tecnologias Utilizadas
- 
- -Java17
-- Programação Orientada a Objetos (POO)
-- Eclipse
-- PlantUML 
-- PostgreSQL (pgAdmin 4)
+Problema: 
 
- Banco de Dados
+Essa abordagem viola o princípio de Separação de Preocupações (Single Responsibility Principle) e a arquitetura ideal do padrão Model-View-Controller .(MVC), onde o Controller deve apenas
 
-O banco de dados é usado para armazenar:
-- Pacientes cadastrados  
-- Consultas  
-- Informações importantes para manter o funcionamento entre execuções  
-  
+💾 Banco de Dados
 
- Como Executar
+O sistema utiliza um banco de dados relacional para garantir a persistência e a integridade dos dados entre diferentes execuções.
 
-1.  Instalar: Certifique-se de ter o PostgreSQL instalado e rodando na porta 5432.
-2.  Criar o BD: Crie um banco de dados chamado SistemaUBS.
-3.  Rodar o Script: Execute o arquivo PostgreSQL no seu cliente (pgAdmin) para criar todas as tabelas.
-4. Abra o projeto em uma IDE como Eclipse, IntelliJ ou VS Code.
-5. Certifique-se de que todos os arquivos .java estejam dentro da pasta src/.
-6. Compile e execute o arquivo
+Tecnologia: PostgreSQL (Gerenciado via pgAdmin 4).
 
-   Melhorias Futuras 
-- Interface gráfica com JavaFX  
-- Sistema completo de login e permissões  
-- Relatórios em PDF  
+Dados Armazenados:
 
----
+Informações de Pacientes cadastrados.
 
-Autores
+Registros de Consultas agendadas.
 
-- Claudernira Nascimento  
-- Felipe da Silva  
+Informações importantes para o funcionamento contínuo do sistema.manipular dados já recebidos da View (I/O).
 
-Projeto desenvolvido para fins acadêmicos. 
+🚀 Como Executar o Projeto
+Siga os passos abaixo para configurar e rodar o sistema localmente:
+
+Instalação do SGBD:
+
+Certifique-se de ter o PostgreSQL instalado e em execução, utilizando a porta padrão (5432).
+
+Criação do Banco de Dados:
+
+Crie um novo banco de dados com o nome exato: SistemaUBS.
+
+Configuração das Tabelas:
+
+Execute o script SQL (localizado na raiz do projeto ou em uma pasta db/) no seu cliente PostgreSQL (ex: pgAdmin 4) para criar todas as tabelas necessárias.
+
+Abertura e Execução do Código:
+
+
+Próximas Etapas e Melhorias Futuras
+
+Este projeto serve como base para um sistema mais abrangente. As principais melhorias planejadas incluem:
+
+Interface Gráfica (GUI): Implementação de uma interface amigável utilizando JavaFX para substituir a I/O baseada em console.
+
+Segurança e Controle de Acesso: Desenvolvimento de um sistema completo de Login e Permissões (perfis de acesso).
+
+Relatórios Profissionais: Geração de relatórios de gestão em formatos padronizados (ex: PDF).
+Abra o projeto em sua IDE (Eclipse, IntelliJ ou VS Code).
+
+Confirme que todos os arquivos .java estão corretamente localizados na pasta src/.
+
+Compile e Execute o arquivo Main.java.
+
+🧑‍💻 Autores
+Este projeto acadêmico foi desenvolvido por:
+
+Claudenira Nascimento
+Felipe da Silva
