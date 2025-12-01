@@ -2,6 +2,10 @@
 
 Este projeto é um sistema simples de cadastro para uma Unidade Básica de Saúde, desenvolvido em Java, com foco em organização, encapsulamento, validação e manipulação de dados de pacientes e funcionários.
 
+Porque não está no padrao MVC?
+Problema:
+Em um MVC correto, o Controller (AgenteDeSaude) deve apenas receber dados já coletados da View, e não realizar a coleta de dados ele mesmo. A Visão (I/O) e a Lógica de Negócio (Controller) estão na mesma classe, violando a separação de preocupações que é a base do MVC.
+
  Funcionalidades
 
 Pacientes
