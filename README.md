@@ -1,99 +1,157 @@
- Sistema de Cadastro e Agendamento para Unidade Básica de Saúde (UBS)
-Projeto acadêmico desenvolvido em Java com foco em persistência de dados e aplicação de Programação Orientada a Objetos (POO).
+Sistema de Cadastro e Agendamento para Unidade Básica de Saúde (UBS)
+
+Projeto acadêmico desenvolvido em Java 17, com foco em persistência de dados, boas práticas de POO e organização estrutural.
+
+
 
  Visão Geral do Projeto
-Este projeto consiste em um Sistema de Gerenciamento básico e robusto, desenvolvido em Java 17, para otimizar os processos de cadastro de Pacientes e Funcionários (Enfermeiros) e o Agendamento de Consultas em uma Unidade Básica de Saúde (UBS).
 
-O desenvolvimento priorizou a organização do código, o encapsulamento de dados sensíveis e a validação rigorosa, garantindo a integridade da informação e a aplicação de conceitos sólidos de POO.
+O sistema tem como objetivo gerenciar Pacientes, Funcionários (Enfermeiros) e o Agendamento de Consultas em uma Unidade Básica de Saúde (UBS).
+O desenvolvimento priorizou:
+
+Organização do código
+
+Encapsulamento de dados
+
+Validação rigorosa de informações
+
+Aplicação correta de conceitos de Programação Orientada a Objetos
+
+
+
 
  Funcionalidades Principais
-O sistema oferece um conjunto completo de operações para a gestão de dados na UBS:
 
-1. Gerenciamento de Pacientes
- Cadastro Completo: Registro de nome, data de nascimento, endereço, sexo e telefone.
+ Gerenciamento de Pacientes
+Cadastro completo: nome, data de nascimento, endereço, sexo, telefone
 
- Validação de Documento: Implementação de lógica para a validação de CPF.
+Validação de CPF
 
- CRUD (Create, Read, Update, Delete): Funcionalidades para Cadastrar, Listar, Editar dados e Remover pacientes.
+CRUD completo: criar, listar, atualizar e excluir
 
- Consulta de Ficha: Exibição da ficha completa do paciente.
+Consulta da ficha individual de cada paciente
 
-2. Gerenciamento de Funcionários (Enfermeiros)
- Cadastro Simples: Registro de nome, identificação, cargo e horário de trabalho.
 
- Relatórios: Geração de um relatório simples com informações organizadas sobre o corpo de funcionários.
+ Gerenciamento de Funcionários (Enfermeiros)
 
- Tecnologias Utilizadas -Java17
+Cadastro simples: nome, identificação, carga e local de trabalho
+
+Geração de relatório organizado com informações dos funcionários
+
+
+ Agendamento de Consultas
+
+Registro dos dados da consulta
+
+Associação ao paciente cadastrado
+
+Garantia de persistência no banco de dados
+
+
+
+
+ Tecnologias Utilizadas
+
+Java 17
 
 Programação Orientada a Objetos (POO)
 
-Eclipse
+Eclipse IDE
 
 PlantUML
 
+PostgreSQL + pgAdmin 4
+
+
+
+ Nota Sobre o Padrão MVC e a Separação de Responsabilidades
+
+Apesar do uso consistente de POO, o projeto apresenta um ponto de atenção:
+
+A classe que atua como Controller (por exemplo, AgenteDeSaude, caso exista) está realizando entrada/saída de dados (I/O) junto com a lógica de negócio.
+
+Problema Identificado
+
+Essa abordagem viola:
+
+O princípio Single Responsibility (SRP)
+
+A estrutura recomendada do padrão Model–View–Controller (MVC)
+
+
+No MVC, o Controller não deve lidar diretamente com I/O, e sim apenas processar dados vindos da View.
+
+
+🗄️ Banco de Dados
+
+O sistema utiliza um banco de dados relacional para manter a integridade e persistência entre execuções.
+
+Tecnologia
+
 PostgreSQL (pgAdmin 4)
 
-Banco de Dados
- 
- ⚠️ Nota sobre o Padrão MVC e a Separação de Preocupações
- 
-Embora o projeto aplique fortes princípios de POO, observou-se uma limitação no escopo atual:
 
-A classe Controller (ou o que desempenha seu papel, como a classe AgenteDeSaude – se esta existir, ou a classe que gerencia a lógica) está atualmente realizando a coleta de dados (Input/Output), juntamente com a lógica de negócio.
+Dados Armazenados
 
-Problema: 
+Informações de Pacientes
 
-Essa abordagem viola o princípio de Separação de Preocupações (Single Responsibility Principle) e a arquitetura ideal do padrão Model-View-Controller .(MVC), onde o Controller deve apenas
+Registros de Consultas
 
-💾 Banco de Dados
-
-O sistema utiliza um banco de dados relacional para garantir a persistência e a integridade dos dados entre diferentes execuções.
-
-Tecnologia: PostgreSQL (Gerenciado via pgAdmin 4).
-
-Dados Armazenados:
-
-Informações de Pacientes cadastrados.
-
-Registros de Consultas agendadas.
-
-Informações importantes para o funcionamento contínuo do sistema.manipular dados já recebidos da View (I/O).
-
-🚀 Como Executar o Projeto
-Siga os passos abaixo para configurar e rodar o sistema localmente:
-
-Instalação do SGBD:
-
-Certifique-se de ter o PostgreSQL instalado e em execução, utilizando a porta padrão (5432).
-
-Criação do Banco de Dados:
-
-Crie um novo banco de dados com o nome exato: SistemaUBS.
-
-Configuração das Tabelas:
-
-Execute o script SQL (localizado na raiz do projeto ou em uma pasta db/) no seu cliente PostgreSQL (ex: pgAdmin 4) para criar todas as tabelas necessárias.
-
-Abertura e Execução do Código:
+Dados manipulados e enviados pela camada de visualização
 
 
-Próximas Etapas e Melhorias Futuras
+ Como Executar o Projeto
 
-Este projeto serve como base para um sistema mais abrangente. As principais melhorias planejadas incluem:
+1. Instale o SGBD
 
-Interface Gráfica (GUI): Implementação de uma interface amigável utilizando JavaFX para substituir a I/O baseada em console.
+Certifique-se de que o PostgreSQL está instalado e rodando na porta padrão 5432.
 
-Segurança e Controle de Acesso: Desenvolvimento de um sistema completo de Login e Permissões (perfis de acesso).
+2. Crie o Banco de Dados
 
-Relatórios Profissionais: Geração de relatórios de gestão em formatos padronizados (ex: PDF).
-Abra o projeto em sua IDE (Eclipse, IntelliJ ou VS Code).
+Crie um banco com o nome SistemaUBS.
 
-Confirme que todos os arquivos .java estão corretamente localizados na pasta src/.
+3. Configure as Tabelas
 
-Compile e Execute o arquivo Main.java.
+Execute o script SQL presente no projeto (na raiz ou na pasta db/).
+Isso criará todas as tabelas necessárias.
+
+4. Abra o Código
+
+Abra o projeto em seu ambiente de desenvolvimento:
+
+Eclipse
+
+IntelliJ IDEA
+
+VS Code
+
+
+Confirme que todos os arquivos .java estão organizados na pasta src/.
+
+5. Execute
+
+Compile e execute o arquivo Main.java.
+
+
+
+
+🔮 Próximas Etapas e Melhorias Futuras
+
+Interface Gráfica (GUI) usando JavaFX
+
+Sistema de Login e Perfis de Acesso
+
+Relatórios profissionais (PDF e outros formatos)
+
+Separação completa em MVC
+
+Ampliação dos módulos de gerenciamento
+
+
+
 
 🧑‍💻 Autores
-Este projeto acadêmico foi desenvolvido por:
 
+Projeto acadêmico desenvolvido por:
 Claudenira Nascimento
 Felipe da Silva
